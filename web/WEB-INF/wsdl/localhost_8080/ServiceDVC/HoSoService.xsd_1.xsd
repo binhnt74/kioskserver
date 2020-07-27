@@ -1,0 +1,284 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.4.2 (UNKNOWN-17d59c9; 2018-09-26T15:16:30-0700) JAXWS-RI/2.3.1 JAXWS-API/2.3.1 JAXB-RI/2.3.1 JAXB-API/2.3.1 svn-revision#unknown. --><xs:schema xmlns:tns="http://Service/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://Service/">
+
+<xs:element name="AddUser" type="tns:AddUser"/>
+
+<xs:element name="AddUserResponse" type="tns:AddUserResponse"/>
+
+<xs:element name="ChangePass" type="tns:ChangePass"/>
+
+<xs:element name="ChangePassResponse" type="tns:ChangePassResponse"/>
+
+<xs:element name="CheckLogin" type="tns:CheckLogin"/>
+
+<xs:element name="CheckLoginResponse" type="tns:CheckLoginResponse"/>
+
+<xs:element name="DeleteHoSo" type="tns:DeleteHoSo"/>
+
+<xs:element name="DeleteHoSoResponse" type="tns:DeleteHoSoResponse"/>
+
+<xs:element name="GetHoSoByUserID" type="tns:GetHoSoByUserID"/>
+
+<xs:element name="GetHoSoByUserIDResponse" type="tns:GetHoSoByUserIDResponse"/>
+
+<xs:element name="GetInformUser" type="tns:GetInformUser"/>
+
+<xs:element name="GetInformUserResponse" type="tns:GetInformUserResponse"/>
+
+<xs:element name="GetListAgency" type="tns:GetListAgency"/>
+
+<xs:element name="GetListAgencyResponse" type="tns:GetListAgencyResponse"/>
+
+<xs:element name="GetServiceConfig" type="tns:GetServiceConfig"/>
+
+<xs:element name="GetServiceConfigResponse" type="tns:GetServiceConfigResponse"/>
+
+<xs:element name="InsertHoSo" type="tns:InsertHoSo"/>
+
+<xs:element name="InsertHoSoResponse" type="tns:InsertHoSoResponse"/>
+
+<xs:element name="UpdateHoSo" type="tns:UpdateHoSo"/>
+
+<xs:element name="UpdateHoSoResponse" type="tns:UpdateHoSoResponse"/>
+
+<xs:element name="UpdateUser" type="tns:UpdateUser"/>
+
+<xs:element name="UpdateUserResponse" type="tns:UpdateUserResponse"/>
+
+<xs:element name="ViewHoSo" type="tns:ViewHoSo"/>
+
+<xs:element name="ViewHoSoResponse" type="tns:ViewHoSoResponse"/>
+
+<xs:element name="getCaptcha" type="tns:getCaptcha"/>
+
+<xs:element name="getCaptchaResponse" type="tns:getCaptchaResponse"/>
+
+<xs:element name="getServiceConfigDetails" type="tns:getServiceConfigDetails"/>
+
+<xs:element name="getServiceConfigDetailsResponse" type="tns:getServiceConfigDetailsResponse"/>
+
+<xs:complexType name="CheckLogin">
+<xs:sequence>
+<xs:element name="userName" type="xs:string" minOccurs="0"/>
+<xs:element name="passWord" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CheckLoginResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="InsertHoSo">
+<xs:sequence>
+<xs:element name="hs" type="tns:hoSo" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="hoSo">
+<xs:sequence>
+<xs:element name="did" type="xs:string" minOccurs="0"/>
+<xs:element name="documentInform" type="tns:documentInform" minOccurs="0"/>
+<xs:element name="listServiceData" type="tns:serviceData" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="sid" type="xs:int"/>
+<xs:element name="sname" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="documentInform">
+<xs:sequence>
+<xs:element name="agency" type="xs:string" minOccurs="0"/>
+<xs:element name="did" type="xs:string" minOccurs="0"/>
+<xs:element name="status" type="xs:string" minOccurs="0"/>
+<xs:element name="subDate" type="xs:string" minOccurs="0"/>
+<xs:element name="userID" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="serviceData">
+<xs:sequence>
+<xs:element name="colid" type="xs:int"/>
+<xs:element name="colname" type="xs:string" minOccurs="0"/>
+<xs:element name="coltype" type="xs:string" minOccurs="0"/>
+<xs:element name="did" type="xs:string" minOccurs="0"/>
+<xs:element name="imgvalue" type="xs:base64Binary" minOccurs="0"/>
+<xs:element name="sid" type="xs:int"/>
+<xs:element name="value" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="InsertHoSoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getServiceConfigDetails">
+<xs:sequence>
+<xs:element name="sid" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getServiceConfigDetailsResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:serviceConfigDetails" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="serviceConfigDetails">
+<xs:sequence>
+<xs:element name="colgroup" type="xs:int"/>
+<xs:element name="colid" type="xs:int"/>
+<xs:element name="colname" type="xs:string" minOccurs="0"/>
+<xs:element name="coltype" type="xs:string" minOccurs="0"/>
+<xs:element name="sid" type="xs:int"/>
+<xs:element name="sname" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ChangePass">
+<xs:sequence>
+<xs:element name="userID" type="xs:int"/>
+<xs:element name="newPass" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ChangePassResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="UpdateUser">
+<xs:sequence>
+<xs:element name="user" type="tns:user" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="user">
+<xs:sequence>
+<xs:element name="birthday" type="xs:string" minOccurs="0"/>
+<xs:element name="cmnd" type="xs:string" minOccurs="0"/>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="fullName" type="xs:string" minOccurs="0"/>
+<xs:element name="passWord" type="xs:string" minOccurs="0"/>
+<xs:element name="userID" type="xs:int" minOccurs="0"/>
+<xs:element name="userName" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="UpdateUserResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getCaptcha">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getCaptchaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="DeleteHoSo">
+<xs:sequence>
+<xs:element name="did" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="DeleteHoSoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ViewHoSo">
+<xs:sequence>
+<xs:element name="did" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ViewHoSoResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:hoSo" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="GetListAgency">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="GetListAgencyResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="GetHoSoByUserID">
+<xs:sequence>
+<xs:element name="userID" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="GetHoSoByUserIDResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:hoSo" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="AddUser">
+<xs:sequence>
+<xs:element name="user" type="tns:user" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="AddUserResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="GetInformUser">
+<xs:sequence>
+<xs:element name="userID" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="GetInformUserResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:user" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="GetServiceConfig">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="GetServiceConfigResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:serviceConfig" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="serviceConfig">
+<xs:sequence>
+<xs:element name="sid" type="xs:int"/>
+<xs:element name="sname" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="UpdateHoSo">
+<xs:sequence>
+<xs:element name="hs" type="tns:hoSo" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="UpdateHoSoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
